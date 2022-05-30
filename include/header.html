@@ -1,0 +1,256 @@
+<?php
+$titles_kr = array("회사소개", "사업안내", "채용정보", "홍보센터");
+$companys_kr = array("회사개요", "연혁", "조직도", "인증현황", "오시는길");
+$products_kr = array("웹", "모바일", "제품", "행사");
+$recruits_kr = array("채용안내", "인재상", "채용공고");
+$news_kr = array("공지사항", "페이스북", "인스타그램");
+
+$companys_uri = array("/Company/Greeting.html",
+                 "/Company/History.html",
+                 "/Company/Organization.html",
+                 "/Company/Certification.html",
+                 "/Company/Maps.html");
+                
+$products_uri = array("/Product/Web.html",
+                 "/Product/Mobile.html",
+                 "/Product/Product.html",
+                 "/Product/Event.html");
+
+$recruits_uri = array("/Recruit/Recruit.html",
+                "/Recruit/Talent.html",
+                "/Recruit/Notification.html");
+
+$news_uri = array("/News/Notice.html",
+            "/News/Facebook.html",
+            "/News/Instar.html");
+?>
+
+<script type="text/javascript">
+    $(document).on("scroll", function() {
+        if ($(document).scrollTop() > 50) {
+            $("header").addClass("header_scroll");
+        } else {
+            $("header").removeClass("header_scroll");
+        }
+    });
+
+    $(document).ready(function() {
+        $(".lnb").navigation();
+
+        $('#header').hover(function() {
+            $("header").addClass("header_scroll");
+        }, function() {
+            $("header").removeClass("header_scroll");
+        });
+    });
+</script>
+
+<section id="header_wrap">
+    <header id="header" class="basic">
+        <h1>
+            <a href="/">
+                <img src="/img/logo.png">
+            </a>
+        </h1>
+
+        <nav class="lnb basic">
+            <ul>
+                <li class="lnb_1 lnb1">
+                    <a href="<?php echo $companys_uri[0]; ?>">
+                        <span><?php echo $titles_kr[0]; ?></span>
+                    </a>
+                    <ul style="display: none;">
+                        <li class="bgn bgn1">
+                            <p>
+                                <a href="<?php echo $companys_uri[0]; ?>"><?php echo $companys_kr[0]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn1">
+                            <p>
+                                <a href="<?php echo $companys_uri[1]; ?>"><?php echo $companys_kr[1]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn1">
+                            <p>
+                                <a href="<?php echo $companys_uri[2]; ?>"><?php echo $companys_kr[2]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn1">
+                            <p>
+                                <a href="<?php echo $companys_uri[3]; ?>"><?php echo $companys_kr[3]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn1">
+                            <p>
+                                <a href="<?php echo $companys_uri[4]; ?>"><?php echo $companys_kr[4]; ?></a>
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lnb_1 lnb2">
+                    <a href="<?php echo $products_uri[0]; ?>">
+                        <span><?php echo $titles_kr[1]; ?></span>
+                    </a>
+                    <ul style="display: none;">
+                        <li class="bgn bgn2">
+                            <p>
+                                <a href="<?php echo $products_uri[0]; ?>"><?php echo $products_kr[0]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn2">
+                            <p>
+                                <a href="<?php echo $products_uri[1]; ?>"><?php echo $products_kr[1]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn2">
+                            <p>
+                                <a href="<?php echo $products_uri[2]; ?>"><?php echo $products_kr[2]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn2">
+                            <p>
+                                <a href="<?php echo $products_uri[3]; ?>"><?php echo $products_kr[3]; ?></a>
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lnb_1 lnb3">
+                    <a href="<?php echo $recruits_uri[0]; ?>">
+                        <span><?php echo $titles_kr[2]; ?></span>
+                    </a>
+                    <ul style="display: none;">
+                        <li class="bgn bgn3">
+                            <p>
+                                <a href="<?php echo $recruits_uri[0]; ?>"><?php echo $recruits_kr[0]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn3">
+                            <p>
+                                <a href="<?php echo $recruits_uri[1]; ?>"><?php echo $recruits_kr[1]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn3">
+                            <p>
+                                <a href="<?php echo $recruits_uri[2]; ?>"><?php echo $recruits_kr[2]; ?></a>
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lnb_1 lnb4">
+                    <a href="<?php echo $news_uri[0]; ?>">
+                        <span><?php echo $titles_kr[3]; ?></span>
+                    </a>
+                    <ul style="display: none;">
+                        <li class="bgn bgn4">
+                            <p>
+                                <a href="<?php echo $news_uri[0]; ?>"><?php echo $news_kr[0]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn4">
+                            <p>
+                                <a href="<?php echo $news_uri[1]; ?>"><?php echo $news_kr[1]; ?></a>
+                            </p>
+                        </li>
+                        <li class="bgn bgn4">
+                            <p>
+                                <a href="<?php echo $news_uri[2]; ?>"><?php echo $news_kr[2]; ?></a>
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <ul class="bg_navi">
+            <div class="bg_navi_line"></div>
+        </ul>
+
+        <nav class="mobile_lnb">
+            <a href="javascript:void(0);" class="menu_btn">
+                <img src="/img/menu_icon.png" class alt="menu">
+            </a>
+
+            <ul class="mobile_menu_area">
+                <li>
+                    <h3>
+                        <a href="/">홈</a>
+                    </h3>
+                    <ul></ul>
+                </li>
+                <li>
+                    <h3>
+                        <a href="<?php echo $companys_uri[0]; ?>"><?php echo $titles_kr[0]; ?></a>
+                    </h3>
+                    <ul>
+                        <li>
+                            <a href="<?php echo $companys_uri[0]; ?>"><?php echo $companys_kr[0]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $companys_uri[1]; ?>"><?php echo $companys_kr[1]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $companys_uri[2]; ?>"><?php echo $companys_kr[2]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $companys_uri[3]; ?>"><?php echo $companys_kr[3]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $companys_uri[4]; ?>"><?php echo $companys_kr[4]; ?></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>
+                        <a href="<?php echo $products_uri[0]; ?>"><?php echo $titles_kr[1]; ?></a>
+                    </h3>
+                    <ul>
+                        <li>
+                            <a href="<?php echo $products_uri[0]; ?>"><?php echo $products_kr[0]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $products_uri[1]; ?>"><?php echo $products_kr[1]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $products_uri[2]; ?>"><?php echo $products_kr[2]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $products_uri[3]; ?>"><?php echo $products_kr[3]; ?></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>
+                        <a href="<?php echo $recruits_uri[0]; ?>"><?php echo $titles_kr[2]; ?></a>
+                    </h3>
+                    <ul>
+                        <li>
+                            <a href="<?php echo $recruits_uri[0]; ?>"><?php echo $recruits_kr[0]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $recruits_uri[1]; ?>"><?php echo $recruits_kr[1]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $recruits_uri[2]; ?>"><?php echo $recruits_kr[2]; ?></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>
+                        <a href="<?php echo $news_uri[0]; ?>"><?php echo $titles_kr[3]; ?></a>
+                    </h3>
+                    <ul>
+                        <li>
+                            <a href="<?php echo $news_uri[0]; ?>"><?php echo $news_kr[0]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $news_uri[1]; ?>"><?php echo $news_kr[1]; ?></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $news_uri[2]; ?>"><?php echo $news_kr[2]; ?></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</section>

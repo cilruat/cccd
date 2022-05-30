@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/head.html';
+        ?>
+    </head>
+    <body>
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/header.html';
+        include $_SERVER["DOCUMENT_ROOT"].'/include/sub_info.html';
+        ?>
+
+        <section class="sub_container">
+            <div class="wrap">
+                <section class="tit_area">
+                    <h2><?php echo $select_child_kr; ?></h2>
+        
+                    <div class="path">
+                        <span class="home">Home</span>
+                        <span class="v_line"></span>
+                        <?php echo $title; ?>
+                        <span class="v_line"></span>
+                        <?php echo $select_child_kr; ?>
+                    </div>
+                </section>
+                
+                <div class="sub_contents">
+                    <div class="pro_overview wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                        <p class="pro_overview_tit">
+                            여행사전용 자유여행 예약 토탈 솔루션 플랫폼
+                            <span>OVERVIEW</span>
+                        </p>
+
+                        <div class="mat10">
+                            <p><span class="f_bold" style="color: #1bacf6">ATLAS</span>는 여행산업의 가치증대와 비즈니스의 혁신을 제공할 수 있는 최고의 여행 플랫폼입니다.</p>
+                            <p class="mat5">세계 3대 GDS인 갈릴레오를 기반으로 항공 예약 및 발권 시스템을 제공하고 있으며 <span class="f_bold">Google Map</span>을 통해 전혀 새로운 일정표 양식을 제공합니다.</p>
+                        </div>
+
+                        <div class="mat30">
+                            <p>
+                                <span class="f_bold">ATLAS URL : </span>
+                                <a href="http://atlaskr.com" target="_blank"><span>http://atlaskr.com</span></a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pro_overview mat100 wow fadeInUp animated" data-wow-delay="200ms" style="visibility: visible; animation-delay: 200mx; animation-name: fadeInUp;">
+                        <p class="pro_overview_tit">
+                            기술
+                            <span>TECHNOLOGY</span>
+                        </p>
+
+                        <div class="web_table mat30">
+                            <dl>
+                                <img src="/img/Web/web_icon01.png">
+                                <div class="product_t">GDS System solution</div>
+                                <div class="product_d">세계 3대 GDS인 갈릴레오 WEB터미널을 기반으로 Agency전용 항공 단말기 시스템을 WEB표준 및 접근성기반의 보급형 항공시스템으로 구축 제작 및 보급하고 있습니다.</div>
+                            </dl>
+                            <dl>
+                                <img src="/img/Web/web_icon02.png">
+                                <div class="product_t">E-Advertisement</div>
+                                <div class="product_d">매일 300여개의 여행에이전시와 에이전시를 이용하는 5000여명의 고객에게 노출되는 광고 효과와 이미 확정되어 있는 여행 고객들에게 필요한 정보를 제공하여 극대화된 효율성을 제공합니다.</div>
+                            </dl>
+                            <dl>
+                                <img src="/img/Web/web_icon03.png">
+                                <div class="product_t">Map - Itinerary solution</div>
+                                <div class="product_d">Google Map 기반으로 전세계 관광지 및 교통수단, 이동방법론을 제시하고 관광지 기반의 일정표 작성 방법론은 여행일정에서 호텔이 중심이 아닌 관광지에서 주변의 호텔을 지정하는 방법으로 새로운 일정표 양식을 보여줍니다.</div>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="pro_overview mat100 wow fadeInUp animated" data-wow-delay="200ms" style="visibility: visible; animation-delay: 200mx; animation-name: fadeInUp;">
+                        <p class="pro_overview_tit">
+                            장점
+                            <span>ADVANTAGE</span>
+                        </p>
+
+                        <div class="product_table mat10">
+                            <dl>
+                                <dd>
+                                    <div class="product_t">소규모 여행사들의 수익성 확보</div>
+                                    <div class="product_d">하나의 서비스를 제공하여도 수익이 발생</div>
+                                </dd>                                
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <div class="product_t">자생적 생태계 확보</div>
+                                    <div class="product_d">항공 및 기타 종합적 컨텐츠 수익 확보</div>
+                                </dd>
+                            </dl>
+                            <dl class="only_one">
+                                <dd>
+                                    <div class="product_t">시스템 구축으로 인한 성장교두보</div>
+                                    <div class="product_d">단독 시스템 구축으로 체계적 업무 처리와 온라인 시스템의 도입으로 신속한 서비스 제공</div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="pro_overview mat100 wow fadeInUp animated" data-wow-delay="200ms" style="visibility: visible; animation-delay: 200mx; animation-name: fadeInUp;">
+                        <p class="pro_overview_tit">
+                            영상
+                            <span>VIDEO</span>
+                        </p>
+
+                        <div class="video_area mat20">
+                            <div class="inner">
+                                <video>
+                                    <source src="/video/Atlas_testing.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script type="text/javascript">
+        $(window).ready(function() {
+            $('.pro_overview .video_area video').prop('controls', true);
+        });
+        </script>
+
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/footer.html';
+        ?>
+    </body>
+</html>

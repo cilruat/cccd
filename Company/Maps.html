@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/head.html';
+        ?>
+    </head>
+    <body>
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/header.html';
+        include $_SERVER["DOCUMENT_ROOT"].'/include/sub_info.html';
+        ?>
+
+        <section class="sub_container">
+            <div class="wrap">
+                <section class="tit_area">
+                    <h2><?php echo $select_child_kr; ?></h2>
+        
+                    <div class="path">
+                        <span class="home">Home</span>
+                        <span class="v_line"></span>
+                        <?php echo $title; ?>
+                        <span class="v_line"></span>
+                        <?php echo $select_child_kr; ?>
+                    </div>
+                </section>
+
+                <div class="sub_contents">
+                    <div class="roadmap mat50 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                        <div class="location_map">
+                            <div id="daumRoughmapContainer1577761199166" class="root_daum_roughmap root_daum_roughmap_landing">
+
+                            </div>
+                        </div>
+
+                        <div class="road_info">
+                            <ul>
+                                <li>
+                                    <img alt="주소" src="/img/icon_map.png">
+                                    <p>경상북도 경산시 대학로 280 영남대학교 창업보육센터 신관 104호</p>
+                                </li>
+                                <li>
+                                    <img alt="전화" src="/img/icon_call.png">
+                                    <p>
+                                        <span>TEL. </span>
+                                        <a href="tel:053-639-0131">053-639-0131</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <img alt="팩스" src="/img/icon_fax.png">
+                                    <p>
+                                        <span>E-mail. </span>
+                                        cccd@cccd.co.kr
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+                <script charset="UTF-8">
+                    new daum.roughmap.Lander({
+                        "timestamp" : "1577761199166",
+                        "key" : "wfrm",
+                        "mapWidth" : "auto",
+                        "mapHeight" : "auto"
+                    }).render();
+                </script>
+            </div>
+        </section>
+
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/footer.html';
+        ?>
+    </body>
+</html>

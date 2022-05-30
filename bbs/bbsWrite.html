@@ -1,0 +1,152 @@
+<?php
+ session_start(); // 세션
+ include $_SERVER["DOCUMENT_ROOT"]."/dbconnect.php";
+
+	//$_GET['bno']이 있을 때만 $bno 선언
+	if(isset($_GET['bno'])) {
+		$bNo = $_GET['bno'];
+  }
+  
+	 
+	if(isset($bNo)) {
+    if($_SESSION['boardtype']=='notice') {
+      $sql = 'select title, content, name from board where idx = ' . $bNo;
+    } else {
+      $sql = 'select title, content, name from recruit_board where idx = ' . $bNo;
+    }
+		
+		$result = $conn->query($sql);
+		$row = $result->fetch_assoc();
+	}
+?>
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>(주)캐릭터콘텐츠문화진흥원</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="all"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" ></script>    
+    <link rel='stylesheet' type='text/css' href='/css/infview.css'>
+   <script>
+     function writeCheck() { 
+        var form = document.writeform; 
+        if( !form.name.value ) // form 에 있는 name 값이 없을 때 
+        { alert( "이름을 적어주세요" ); // 경고창 띄움 
+          form.name.focus(); // form 에 있는 name 위치로 이동 
+          return; 
+        } 
+        if( !form.title.value ) { 
+            alert( "제목을 적어주세요" ); 
+            form.title.focus(); return; 
+        } 
+        if( !form.memo.value ) { 
+            alert( "내용을 적어주세요" ); 
+            form.memo.focus(); return; 
+        } 
+        //refresh_page( 1 );
+        form.submit();
+        //self.window.alert("입력한 글을 저장하였습니다.");
+        //make_btn();
+        //refresh_page( 1 );
+        //location.href="/user/pagetable.html"; 
+    }
+    </script>
+     <style>
+      table tr .btn_write{
+        width: 60px;height: 30px;line-height: 30px;margin:10px 5px 0;
+        padding-left: 10px;padding-right: 10px;font-size: 14px;
+        color:#fff;font-weight: normal;text-align: center;
+        background-color: #595959; cursor: pointer;
+    }
+  </style>
+  </head>
+  <body>  
+    <section>
+        <form name="writeform" method="post" enctype="multipart/form-data" action="/bbs/bbsSave.php" onsubmit="return writeCheck()">
+        <?php
+				if(isset($bNo)) {
+					echo '<input type="hidden" name="bno" value="' . $bNo . '">';
+				}
+				?>       
+        <table style="margin-left:auto; margin-right:auto;">
+
+            <tr>
+                <td>&nbsp;</td>
+                <td align="center" style=white-space:nowrap;> 제목 </td>
+                <td><input type="text" name="title" maxlength="50" class="title"
+                value = "<?php echo isset($row['title'])?$row['title']:null?>">
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+               <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+
+            <tr>
+                <td>&nbsp;</td>
+                <td align="center" sstyle=white-space:nowrap;> 작성자 </td>
+                <td><input type="text" name="name" maxlength="50" class="name"
+                value = "<?php echo isset($row['name'])?$row['name']:null?>">
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+                <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+            <?php if($_SESSION['boardtype']!='notice') { ?>
+            <tr>
+                <td>&nbsp;</td>
+                <td align="center"> 상태 </td>
+                  <td>
+                    <select name="option" class="option">
+                      <option value="모집중">모집중</option>
+                      <option value="null">종료 </option>
+                    </select>
+                  </td>
+                <td>&nbsp;</td>
+            </tr>
+            <?php } ?>
+                <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+
+            <tr>
+                <td>&nbsp;</td>
+                <td align="center" style=white-space:nowrap;>첨부파일</td>
+                <td><input type="file" name="filelist" size="200" maxlength="200" class="filelist" accept=".png"></td>
+                <td>&nbsp;</td>
+                </tr>
+                <tr height="1" bgcolor="#dddddd"><td colspan="4"></td>
+                <!--form name="uploadForm" id="uploadForm" method="post" action="fileUpDownLoad/upload_process.php" enctype="multipart/form-data" onsubmit="return formSubmit(this);">
+                <div>
+                <label for="upfile">첨부파일</label>
+                <input type="file" name="upfile" id="upfile" accept=".png, .jpeg, .jpg">
+                </div>
+                <input type="submit" value="업로드" />
+                </form> -->       
+            </tr>
+            
+            <tr>
+                <td>&nbsp;</td>
+                <td align="center">내용</td>
+                <td><textarea name="memo" cols="110" rows="30" class="memo">
+                <?php echo isset($row['content'])?$row['content']:null?></textarea></td>
+                <td>&nbsp;</td>
+               </tr>
+               <tr height="1" bgcolor="#dddddd"><td colspan="4"></td>
+            </tr>
+               <td>&nbsp;</td>
+               <tr align="center">
+                <td colspan="3">
+                <?php if($_SESSION['boardtype']=='notice') { ?>
+                <input type=submit class="btn_write" Onclick="/bbs/bbsList.html" value = "<?php echo isset($bNo)?'수정':'작성'?>">
+                <?php } else { ?>
+                <input type=submit class="btn_write" Onclick="/bbs/bbsListRecruit.html" value = "<?php echo isset($bNo)?'수정':'작성'?>">
+                <?php } ?>
+                <input type=button class="btn_write" value="취소" Onclick="javascript:history.back(-1)">
+                <td>&nbsp;</td>
+               </tr>
+        </table>
+        </form>
+        <script>
+        </script>
+
+    </section>    
+  </body>
+</html>

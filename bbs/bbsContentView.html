@@ -1,0 +1,130 @@
+<?php
+  session_start(); // 세션
+  include $_SERVER["DOCUMENT_ROOT"]."/dbconnect.php";
+  
+ $bNo = $_GET['bno'];
+//echo "bNo ............. {$_GET['bno']} <br />";
+
+ if(!empty($bNo)&&empty($_COOKIE['board'.$bNo])){
+    if($_SESSION['boardtype']=='notice') {
+        $slq = 'update board set hits = hits + 1 where idx =' .$bNo;
+    } else {
+        $slq = 'update recruit_board set hits = hits + 1 where idx =' .$bNo;
+    }
+     
+     $result = $conn->query($sql);
+     if(empty($result)) {       
+        if($_SESSION['boardtype']=='notice') {
+            setcookie('board'.$bNo, TRUE, time() + (60*60*24), '/');
+        } else {
+            setcookie('recruit_board'.$bNo, TRUE, time() + (60*60*24), '/');
+        }           
+     }
+ }
+ if($_SESSION['boardtype']=='notice') {
+    $sql = 'SELECT * FROM board where idx = '.$bNo;
+ } else {
+    $sql = 'SELECT * FROM recruit_board where idx = '.$bNo;
+ }
+ $result = $conn->query($sql);
+ $row = $result->fetch_assoc();
+?>
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>캐릭터콘텐츠문화진흥원(주)</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="all"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" ></script>
+    <link rel='stylesheet' type='text/css' href='/css/infview.css'>
+    <!--<script type="text/javascript" src="/user/paging.js"></script> -->
+   <style>
+    </style>
+    
+  </head>
+  <body>
+     
+      <section>
+        <div class="notice_container">
+            <div class="notice_view">
+                <!-- 글의 제목: 시작-->
+                <h4 class="h4_label">
+                    <span id="frm_username">제목 : <?php echo $row['title']?></span></h4>
+                <!--작성 현황: 시작-->
+                <ul class="wrt_box">
+                    <li class="wrt_box_left">
+                        <span class="wrt_box_name">
+                            <span id="frm_username1">작성자: <?php echo $row['name']?></span>
+                        </span>                     
+                    </li>                    
+                </ul>
+                <ul class="wrt_box">
+                    <li class="wrt_box_left">                       
+                        <span class="wrt_box_date">
+                            <span class="head">작성일: <?php echo $row['date']?></span>
+                        </span>
+                    </li>
+                </ul>
+                <ul class="wrt_box">
+                    <li class="wrt_box_left">                       
+                        <span class="wrt_box_date">
+                            <span class="head">조회: <?php echo $row['hits']?></span>
+                        </span>
+                    </li>
+                </ul>
+                <!--첨부파일-->
+                <ul class="file_box">
+                    <li class="file_box_left">
+                        첨부파일 : <span id="frm_username2"><a href="/bbs/bbsDownload.php?file_id=<?php echo $row['covfile'] ?>" target="_blank"><?php echo $row['file'] ?></a></span>
+                    </li>
+                    <!--<?php if( $row['writeoption'] != 'null'){ ?>
+                    <li class="file_box_right">
+                        <span class="head">상태: <?php echo $row['writeoption']?></span>
+                    </li>
+                    <?php } ?>-->
+                </ul>
+                <!-- 글 세부 내용 작성-->
+                <div class="read_area">
+                    <span id="frm_username3"><?php echo $row['content']?></span>
+                </div>
+            </div>
+            <!-- 목록으로 돌아가는 버튼만들기-->
+            <div class="btn_list">
+                <div class="btn_list_right">   
+                    <?php if($_SESSION['id']!=null) {?>
+                    <input type="button" class="btn_listbox" value="수정" Onclick="window.location='/bbs/bbsWrite.html?bno=<?php echo $bNo?>'">
+                    <form action = "/bbs/bbsDelete.php" name="deletefrm" method="post">
+                        <input type="hidden" name="bno" value="<?php echo $bNo?>">
+                        <input type="button" class="btn_listbox" value="삭제" onclick="delete_btn();">
+                    </form>
+                    <?php } ?>
+                    <?php if($_SESSION['boardtype']=='notice') {?>
+                        <input type=button class="btn_listbox" value="목록" Onclick="window.location='/bbs/bbsList.html'">
+                    <?php } else { ?>
+                        <input type=button class="btn_listbox" value="목록" Onclick="window.location='/bbs/bbsListRecruit.html'">
+                    <?php } ?>
+                    <!--Onclick="javascript:history.back(-1) 뒤로 돌아가기-->
+                </div>
+            </div>
+        </div>
+
+    <script>
+            // document.getElementById("frm_username").innerHTML =  total_array[1][1];
+            // document.getElementById("frm_username1").innerHTML = total_array[1][4];
+            // document.getElementById("frm_username2").innerHTML = total_array[1][5];
+            // document.getElementById("frm_username3").innerHTML = total_array[1][6];
+          function delete_btn() {
+              if(confirm("삭제하시겠습니까?") == true) {
+                  document.deletefrm.submit();
+              }
+              else {
+                  return false;
+              }
+          }
+      </script>
+
+      
+  </body>
+</html>

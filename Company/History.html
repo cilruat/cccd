@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/head.html';
+        ?>
+    </head>
+    <body>
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/header.html';
+        include $_SERVER["DOCUMENT_ROOT"].'/include/sub_info.html';
+        ?>
+
+        <section class="sub_container">
+            <div class="wrap">
+                <section class="tit_area">
+                    <h2><?php echo $select_child_kr; ?></h2>
+        
+                    <div class="path">
+                        <span class="home">Home</span>
+                        <span class="v_line"></span>
+                        <?php echo $title; ?>
+                        <span class="v_line"></span>
+                        <?php echo $select_child_kr; ?>
+                    </div>
+                </section>
+
+                <div class="sub_contents">
+                    <div class="history_box mat50">
+                        <dl class="left">
+                            <dt>
+                                <span class="circle"></span>
+                                2019
+                            </dt>
+                            <dd class="delay mat20">
+                                <p class="date">09</p>
+                                <p>영남대학교(LINC+) 사업단 상호 협력 협약 체결</p>
+                            </dd>
+                            <dd class="delay mat10">
+                                <p class="date"></p>
+                                <p>KITA 한국무역협회 회원</p>
+                            </dd>
+                            <dd class="image delay">
+                                <img src="/img/KITAall.jpg">
+                            </dd>
+                            <dd class="delay mat40">
+                                <p class="date">07</p>
+                                <p>클루앤코 가입</p>
+                            </dd>
+                            <dd class="delay mat10">
+                                <p class="date"></p>
+                                <p>OKTA 세계한인무역협회 준회원</p>
+                            </dd>
+                            <dd class="delay mat20">
+                                <p class="date">03</p>
+                                <p>실리콘밸리 IR로드쇼 초청</p>
+                            </dd>
+                            <dd class="delay mat20">
+                                <p class="date">02</p>
+                                <p>여성기업인증</p>
+                            </dd>
+                        </dl>
+
+                        <dl class="right mat20 delay">
+                            <dt class="delay">
+                                <span class="circle"></span>
+                                2018
+                            </dt>
+                            <dd class="delay mat20">
+                                <p class="date">11</p>
+                                <p>벤처기업인증</p>
+                            </dd>
+                            <dd class="delay mat20">
+                                <p class="date">10</p>
+                                <p>Atlas 사용 회원사 250점 돌파</p>
+                            </dd>
+                            <dd class="delay mat20">
+                                <p class="date">09</p>
+                                <p>창업진흥원 세대융합창업캠퍼스 선정</p>
+                            </dd>
+                            <dd class="delay">
+                                <p class="date"></p>
+                                <p>경북창조경제혁신센터 Pre G-Star Dreamers 2기 선정</p>
+                            </dd>
+                            <dd class="delay">
+                                <p class="date"></p>
+                                <p>기술보증기금 기보벤처캠프 3기 선정</p>
+                            </dd>
+                            <dd class="delay mat20">
+                                <p class="date">08</p>
+                                <p>경북창조경제혁신센터 입주</p>
+                            </dd>
+                            <dd class="delay">
+                                <p class="date"></p>
+                                <p>200개 회원사 가입</p>
+                            </dd>
+                            <dd class="delay mat20">
+                                <p class="date">07</p>
+                                <p>경북창조경제혁신센터 G-STARt Up Pitchday 혁신상 수상</p>
+                            </dd>
+                            <dd class="image delay">
+                                <img src="/img/Certification/5-1-mini.jpg">
+                            </dd>
+                            <dd class="delay mat10">
+                                <p class="date">05</p>
+                                <p>Atlas 사용 회원사 100점 돌파</p>
+                            </dd>
+                            <dd class="delay mat20">
+                                <p class="date">04</p>
+                                <p>사업자 등록</p>
+                            </dd>
+                        </dl>
+                        <dl class="left">
+                            <dt class="delay">
+                                <span class="circle"></span>
+                                2017
+                            </dt>
+                            <dd class="delay mat20">
+                                <p class="date">12</p>
+                                <p>Atlas 사용 회원사 30점 돌파</p>
+                            </dd>
+                            <dd class="delay mat20">
+                                <p class="date">07</p>
+                                <p>Atlas system 개발 착수</p>
+                            </dd>
+                            <dd class="delay">
+                                <p class="date"></p>
+                                <p>법인 설립</p>
+                            </dd>
+                            <dd class="image delay">
+                                <img src="/img/logo_white.jpg">
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <script type="text/javascript">
+                    // 연혁 스크롤 반응
+                    $(window).scroll(function() {                        
+                        var h = $(window).scrollTop();
+
+                        var len = $('.delay').length;
+                        for (var i = 0; i < len; i++) {
+                            var obj = $(".delay:eq(" + i + ")");
+                            var obj_top = obj.offset().top - 800;
+
+                            if (h >= obj_top)
+                                obj.addClass('active');
+                        }
+                    });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/footer.html';
+        ?>
+    </body>
+</html>

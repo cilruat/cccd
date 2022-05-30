@@ -1,0 +1,84 @@
+<?php
+session_start(); // 세션
+$_SESSION['boardtype'] = 'notice';
+ include $_SERVER["DOCUMENT_ROOT"]."/bbs/bbsPageNum.php";
+ //if($_SESSION['id']==null) { // 로그인 하지 않았다면 
+?>
+<!DOCTYPE html>
+<html>
+<head>	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" />
+	<title>캐릭터콘텐츠문화진흥원(주)</title>
+	<link rel="stylesheet" href="/css/view.css" />
+</head>
+<body>
+
+<section>
+	<div class="notice_container">
+		<div class="board_status">
+			<div class="board_status_left">
+				<span id = "obj">
+					<!--total:<?php echo $allPost?> $allPost 전체게시글의 수-->
+					<input type=button class="btn_login" value="관리자" OnClick="window.location='/bbs/bbsLogin.html'">
+				</span>
+			</div>
+		</div>
+	  
+	
+	<div id="tbl_container">
+		<table>
+			<colgroup>
+				<!--<col style="width:80px;" class="m_dp_n">-->
+				<col style="width:60px;">
+				<col>
+				<col style="width:120px;" class="mobile_not"> 
+				<col style="width:80px;" class="mobile_not">
+          </colgroup>
+			<thead>
+				<!--<th><input type="checkbox" name="_selected_all_"></th>-->
+				<th>번호</th>
+				<th class="mobile_title">제목</th>
+				<th class="mobile_not" >등록일</th>
+				<th class="mobile_not" >조회수</th>
+			</thead>
+			<tbody>
+						<?php
+							while($row = $result->fetch_assoc())
+							{
+								$datetime = explode(' ', $row['date']);
+								$date = $datetime[0];
+								$time = $datetime[1];
+								if($date == Date('Y-m-d'))
+									$row['date'] = $time;
+								else
+									$row['date'] = $date;
+						?>
+					<tr>
+						<td class="no"><?php echo $row['idx']?></td>
+						<td class="title">
+							<a href="/bbs/bbsContentView.html?bno=<?php echo $row['idx']?>"><?php echo $row['title']?></a>
+							<div class="notice_info"><br>등록일:<?php echo $date?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;조회수:<?php echo $row['hits']?></div>
+						</td>
+						<td class="date mobile_not"><?php echo $date?></td>
+						<td class="hit mobile_not"><?php echo $row['hits']?></td>
+					</tr>
+						<?php
+							}
+						?>
+				</tbody>
+			</table>
+			<?php if($_SESSION['id']!=null) {?>
+			<div class="btn_container" align=left>
+				<input type=button class="btn_write" value="글쓰기" OnClick="window.location='/bbs/bbsWrite.html'">
+			</div>
+			<?php } ?>
+			<div class="paging">
+				<?php echo $paging ?>
+			</div>
+		</div>
+	</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?php
+ include $_SERVER["DOCUMENT_ROOT"]."/bbs/bbsPageNum.php";
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/head.html';
+        ?>
+        <meta charset="utf-8" />
+        <title>캐릭터콘텐츠문화진흥원(주)</title>
+    </head>
+    <body>
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/header.html';
+        include $_SERVER["DOCUMENT_ROOT"].'/include/sub_info.html';
+        ?>
+        <section class="sub_container">
+            <div class="wrap">
+                <div class="sub_contents overview">
+                    <section class="tit_area">
+                        
+                        <h2><?php echo $select_child_kr; ?></h2>
+                        
+                        <div class="path">
+                            <span class="home">Home</span>
+                            <span class="v_line"></span>
+                            <?php echo $title; ?>
+                            <span class="v_line"></span>
+                            <?php echo $select_child_kr; ?>
+                        </div>
+                        <div><iframe src="/bbs/bbsList.html" width = "100%" height = "700px" 
+                            frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=yes vspace=0></iframe></div>
+
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"].'/include/footer.html';
+        ?>
+    </body>
+</html>

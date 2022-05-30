@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, a, abbr, address, cite, em, img, strong, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, section, summary, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+address, article, aside, blockquote, body, center, dd, dir, div, dl, dt, figure, figcaption, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, legend, listing, menu, nav, ol, p, plaintext, pre, section, summary, ul, xmp {
+    display: block;
+}
+
+ol, ul, li {list-style: none;}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%;
+    line-height: normal;
+}
+
+html, body {
+    color: #000;
+    font-size: 15px;
+    letter-spacing: -0.7px;
+    font-family: 'Roboto Condensed', 'NotoSansKR', '맑은고딕', Malgun Gothic, sans-serif,'Sans-serif', 'Malgun Gothic', 맑은고딕, 돋움, 'dotum';
+    min-width: 320px;
+    line-height: 1.4em;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    vertical-align: middle !important;
+}
+
+label, select, input, button {vertical-align: baseline;}
+
+a:link, a:visited {text-decoration: none;}
+a {color: inherit;}
+
+img {
+    max-width: 100%;
+    border: 0;
+    vertical-align: middle;
+}
+
+img, fieldset {border: 0 none;}
+
+li {display: list-item;}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.f_bold {font-weight: 600 !important;}
+
+.mat5 {margin-top: 5px !important;}
+.mat10 {margin-top: 10px !important;}
+.mat20 {margin-top: 20px !important;}
+.mat30 {margin-top: 30px !important;}
+.mat40 {margin-top: 40px !important;}
+.mat50 {margin-top: 50px !important;}
+.mat60 {margin-top: 60px !important;}
+.mat100 {margin-top: 100px !important;}
+
+.mab50 {margin-bottom: 50px !important;}

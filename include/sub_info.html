@@ -1,0 +1,112 @@
+<?php
+$uri = $_SERVER['REQUEST_URI'];
+
+$title_splits = explode("/", $uri);
+$title_upper = strtoupper($title_splits[1]);
+
+$title = "";
+$child_array_uri = array();
+$child_array_kr = array();
+switch($title_splits[1]) {
+    case "Company":
+        $title = $titles_kr[0];
+        $child_array_uri = $companys_uri;
+        $child_array_kr = $companys_kr;
+        break;
+    case "Product":
+        $title = $titles_kr[1];
+        $child_array_uri = $products_uri;
+        $child_array_kr = $products_kr;
+        break;
+    case "Recruit":
+        $title = $titles_kr[2];
+        $child_array_uri = $recruits_uri;
+        $child_array_kr = $recruits_kr;
+        break;
+    case "News":
+        $title = $titles_kr[3];
+        $child_array_uri = $news_uri;
+        $child_array_kr = $news_kr;
+        break;
+}
+
+$child_cnt = count($child_array_uri);
+// echo "<script>console.log('result = ".$child_cnt."');</script>";
+?>
+
+<section class="sub_visual">
+    <div class="sub_visual_dim"></div>
+    <div class="visual_pattern"></div>
+    <div class="wrap">
+        <div class="text">
+            <h2 class="wow fadeInUp animated" data-wow-duration="800ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 800ms; animation-delay: 300ms; animation-name: fadeInUp;"><?php echo $title_upper; ?></h2>
+            <p class="sub_txt wow fadeInUp animated" data-wow-duration="800ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 800ms; animation-delay: 600ms; animation-name: fadeInUp;">
+                <span><?php echo $title; ?></span>
+            </p>
+        </div>
+    </div>
+    <div class="visual_img">
+        <img alt src="/img/sub_visual01.jpg">
+    </div>
+</section>
+
+<div class="sub_depth">
+    <div class="wrap">
+        <div class="bgn">
+            <?php
+            $select_child_kr = "";
+            for ($i = 0; $i < $child_cnt; $i++) {
+                $str_on = "";
+                if ($uri == $child_array_uri[$i])
+                {
+                    $str_on = "on";
+                    $select_child_kr = $child_array_kr[$i];
+                }
+            ?>
+            <span>                
+                <a class="<?php echo $str_on; ?>" href="<?php echo $child_array_uri[$i]; ?>"><?php echo $child_array_kr[$i]; ?></a>
+            </span>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+</div>
+
+<div id="mobile_sub_nav" class="mobile_sub_nav">
+    <ul>
+        <li class="home">
+            <a href="/"></a>
+        </li>
+        <li class="nav_gnb"><?php echo $title; ?></li>
+        <li class="snb_area">
+            <nav id="snb_menu">
+                <div class="select" onclick="menu_toggle('select_open');">
+                    <p class="menu_item"><?php echo $select_child_kr; ?></p>
+                </div>
+                <div id="select_open">
+                    <ul class="open">
+                        <ul class="sub_menu sub1">
+                            <?php
+                            for ($i = 0; $i < $child_cnt; $i++) {
+                                $str_on = $uri == $child_array_uri[$i] ? "on" : "";
+                            ?>
+                            <li>
+                                <a class="<?php echo $str_on; ?>" href="<?php echo $child_array_uri[$i]; ?>"><?php echo $child_array_kr[$i]; ?></a>
+                            </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    </ul>
+                </div>
+            </nav>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    function menu_toggle(layer) {
+        $("#" + layer).slideToggle(0);
+    }
+</script>

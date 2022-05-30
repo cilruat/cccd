@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<?php
+
+session_start(); // 세션
+//if($_SESSION['id']==null) { // 로그인 하지 않았다면
+   
+?>
+<html lang="ko">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
+    <title>캐릭터콘텐츠문화진흥원(주)</title>
+    <meta name='title' content='Title'>
+    <script type="text/javascript" src="/bbs/bbsLogin.js"></script>
+    <link rel="stylesheet" href="/css/login.css" />
+</head>
+
+<body>
+    <div class="header_name">
+        로그인
+    </div>
+    <section>
+        <div id="wrap">
+            <div id="container">
+                <form name="singIn" action="bbsLoginCheck.php" method="post" onsubmit="return checkSubmit()">
+                    <div class="line">
+                        <p>아이디</p>
+                        <br>
+                        <div class="inputArea">
+                            <input type="text" name="id" class="id" />
+                        </div>
+                    </div>
+                    <div class="line">
+                        <p>비밀번호</p>
+                        <br>
+                        <div class="inputArea">
+                            <input type="password" name="pw" class="pw" />
+                        </div>
+                    </div>
+                    <div class="login_btn">
+                        <br>
+                        <input type="submit" value="로그인" class="submit" />
+                    </div>
+                </form>
+                   
+            </div>
+        </div>
+    </section>
+   
+</body>
+</html>
+
+<?php
+
+// }else{ // 로그인 했다면
+
+//    echo "<center><br><br><br>";
+//    echo $_SESSION['name']."(".$_SESSION['id'].")님이 로그인 하였습니다.";
+//    echo "&nbsp;<a href='logout.php'><input type='button' value='Logout'></a>";
+//    echo "</center>";
+// }
+
+?>
